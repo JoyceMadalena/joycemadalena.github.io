@@ -84,13 +84,13 @@
   display: flex;
   gap: 2rem;
   list-style: none;
-  order: 3;
 }
 
 .nav-links a {
   text-decoration: none;
   color: white;
   transition: 0.3s;
+  order: 2;
 }
 
 .nav-links a:hover {
