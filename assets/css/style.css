@@ -297,6 +297,16 @@ body.high-contrast .menu-toggle span {
   animation: skeleton 1.4s ease infinite;
 }
 
+.project-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.project-link:hover {
+  text-shadow: 0 0 5px #9f7aea;
+}
+
 @keyframes skeleton {
   0% {
     background-position: 100% 0;
