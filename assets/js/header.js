@@ -1,67 +1,56 @@
-document.addEventListener("click", function (e) {
+// ===== MENU SANDUÍCHE =====
+document.addEventListener("click", (e) => {
   const toggle = e.target.closest(".menu-toggle");
   const link = e.target.closest(".nav-links a");
   const navLinks = document.querySelector(".nav-links");
 
-  if (toggle) {
-    navLinks.classList.toggle("active");
-  }
-
-  if (link) {
-    navLinks.classList.remove("active");
-  }
+  if (toggle) navLinks.classList.toggle("active");
+  if (link) navLinks.classList.remove("active");
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Selecionando elementos
-  const increaseFontButton = document.getElementById("increase-font");
-  const decreaseFontButton = document.getElementById("decrease-font");
-  const contrastBtn = document.getElementById("high-contrast-toggle");
-  const menuToggle = document.querySelector(".menu-toggle");
-  const navLinks = document.querySelector(".nav-links");
+// ===== ACESSIBILIDADE =====
+document.addEventListener("click", (e) => {
   const body = document.body;
+  let fontSize = parseInt(localStorage.getItem("fontSize")) || 100;
 
-  // Tamanho de fonte padrão
-  let fontSize = 100;
-
-  // Carregar preferências salvas
-  const savedFontSize = localStorage.getItem("fontSize");
-  if (savedFontSize) {
-    fontSize = parseInt(savedFontSize);
+  // Aumentar fonte
+  if (e.target.closest("#increase-font")) {
+    if (fontSize < 150) fontSize += 10;
     document.documentElement.style.fontSize = `${fontSize}%`;
+    localStorage.setItem("fontSize", fontSize);
   }
 
-  if (localStorage.getItem("highContrast") === "on") {
-    body.classList.add("high-contrast");
-    contrastBtn.classList.add("active");
+  // Diminuir fonte
+  if (e.target.closest("#decrease-font")) {
+    if (fontSize > 70) fontSize -= 10;
+    document.documentElement.style.fontSize = `${fontSize}%`;
+    localStorage.setItem("fontSize", fontSize);
   }
 
-  // Funções de ajuste de fonte
-  increaseFontButton.addEventListener("click", () => {
-    if (fontSize < 150) {
-      fontSize += 10;
-      document.documentElement.style.fontSize = `${fontSize}%`;
-      localStorage.setItem("fontSize", fontSize);
-    }
-  });
-
-  decreaseFontButton.addEventListener("click", () => {
-    if (fontSize > 70) {
-      fontSize -= 10;
-      document.documentElement.style.fontSize = `${fontSize}%`;
-      localStorage.setItem("fontSize", fontSize);
-    }
-  });
-
-  // Botão de alto contraste
-  contrastBtn.addEventListener("click", () => {
+  // Contraste
+  if (e.target.closest("#high-contrast-toggle")) {
+    const btn = e.target.closest("#high-contrast-toggle");
     body.classList.toggle("high-contrast");
-    contrastBtn.classList.toggle("active");
+    btn.classList.toggle("active");
 
     if (body.classList.contains("high-contrast")) {
       localStorage.setItem("highContrast", "on");
     } else {
       localStorage.removeItem("highContrast");
     }
-  });
+  }
+});
+
+// ===== CARREGAR PREFERÊNCIAS AO INICIAR =====
+document.addEventListener("DOMContentLoaded", () => {
+  const body = document.body;
+  const contrastBtn = document.getElementById("high-contrast-toggle");
+
+  let fontSize = parseInt(localStorage.getItem("fontSize")) || 100;
+  document.documentElement.style.fontSize = `${fontSize}%`;
+
+  if (localStorage.getItem("highContrast") === "on") {
+    body.classList.add("high-contrast");
+    if (contrastBtn) contrastBtn.classList.add("active");
+  }
 });

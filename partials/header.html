@@ -3,7 +3,26 @@
     <!-- Logo -->
     <img src="assets/images/logoup.png" alt="Logo" class="logo-icon" />
 
-    <!-- Botão do menu hambúrguer -->
+    <!-- Botões de acessibilidade -->
+    <div class="accessibility-options">
+      <button id="increase-font" aria-label="Aumentar tamanho da fonte">
+        A+
+      </button>
+      <button id="decrease-font" aria-label="Diminuir tamanho da fonte">
+        A-
+      </button>
+      <button
+        id="high-contrast-toggle"
+        class="contrast-btn"
+        aria-label="Ativar alto contraste"
+      >
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 18V4a8 8 0 010 16z" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Botão menu sanduíche -->
     <button class="menu-toggle" aria-label="Abrir menu">
       <span></span>
       <span></span>
@@ -16,25 +35,30 @@
       <li><a href="#projects">Projetos</a></li>
       <li><a href="#contact">Contatos</a></li>
     </ul>
-
-    <!-- Botões de acessibilidade -->
-    <div class="accessibility-options">
-      <button id="increase-font" aria-label="Aumentar tamanho da fonte">
-        A+
-      </button>
-      <button id="decrease-font" aria-label="Diminuir tamanho da fonte">
-        A-
-      </button>
-
-      <button
-        id="high-contrast-toggle"
-        class="contrast-btn"
-        aria-label="Ativar alto contraste"
-      >
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 18V4a8 8 0 010 16z" />
-        </svg>
-      </button>
-    </div>
   </nav>
 </header>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container hero-container">
+    <div class="hero-content">
+      <h1>Boas-Vindas!</h1>
+      <p>
+        Sou Joyce Madalena, desenvolvedora front-end especializada em criar
+        interfaces modernas, acessíveis e bem estruturadas, conectando design e
+        tecnologia para entregar experiências digitais funcionais, consistentes
+        e centradas no usuário.
+      </p>
+      <a
+        href="assets/cv/Currículo-JoyceMadalena.pdf"
+        class="btn-primary"
+        download
+        >Baixar currículo</a
+      >
+    </div>
+
+    <div class="hero-image">
+      <img src="assets/images/joyceup.jpeg" alt="Foto de Joyce Madalena" />
+    </div>
+  </div>
+</section>
